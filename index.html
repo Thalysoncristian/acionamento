@@ -1,0 +1,86 @@
+ <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informativo de Acionamento - STTE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Imagem com a logo -->
+        <img src="https://gms.stte.com.br/gms_rno/images/logo.jpg" alt="STTE Logo" class="logo" onerror="this.style.display='none'">
+
+        <h1>Informativo de Acionamento - STTE</h1>
+
+        <!-- Formulário de entrada -->
+        <form id="stteForm">
+            <label>Analista NOC:</label>
+            <input type="text" id="analista" placeholder="DIGITE O ANALISTA">
+
+            <label>Supervisor:</label>
+            <input type="text" id="supervisor" placeholder="DIGITE O SUPERVISOR">
+
+            <label>CN:</label>
+            <select id="cn">
+                <option value="91">91 Belém</option>
+                <option value="92">92 Amazonas</option>
+                <option value="93">93 Roraima</option>
+                <option value="94">94 Santarém</option>
+                <option value="95">95 Boa Vista</option>
+                <option value="96">96 Macapá</option>
+                <option value="98">98 São Luís</option>
+                <option value="99">99 Imperatriz</option>
+            </select>
+
+            <label>Estação:</label>
+            <input type="text" id="estacao" placeholder="DIGITE A ESTAÇÃO">
+
+            <label>Alarme:</label>
+            <select id="alarme" onchange="calculateSLA()">
+                <option value="AFCA">AFCA - FALHA DE ENERGIA - SLA 4H</option>
+                <option value="ABAT">ABAT - BATERIA EM DESCARGA - SLA 4H</option>
+                <option value="AFRET">AFRET - FALHA DE RETIFICADOR - SLA 24H</option>
+                <option value="ADIF">ADIF - FALHA DE FUSÍVEL - SLA 4H</option>
+                <option value="AQDF">AQDF - FALHA DE QUADRO DE FORÇA - SLA 4H</option>
+                <option value="ABAL">ABAL - FALHA DE BALIZAMENTO - SLA 24H</option>
+                <option value="AOGMG">AOGMG - GMG EM OPERAÇÃO - SLA 4H</option>
+                <option value="ACGMG">ACGMG - BAIXO NIVEL DE COMBUSTIVEL - SLA 4H</option>
+                <option value="AFGMG">AFGMG - FALHA NO GMG - SLA 4H</option>
+                <option value="ATEMP">ATEMP - ALTA TEMPERATURA - SLA 4H</option>
+                <option value="ATRO">ATRO - TROCADOR DE CALOR - SLA 4H</option>
+                <option value="ARCON">ARCON - FALHA DE AR-CONDICIONADO - SLA 4H</option>
+                <option value="OUTRO">OUTRO</option>
+            </select>
+
+            <label>AMI:</label>
+            <input type="text" id="ami" placeholder="DIGITE O AMI">
+
+            <label>INC:</label>
+            <input type="text" id="inc" placeholder="DIGITE O INC">
+
+            <label>Hora do Acionamento:</label>
+            <input type="time" id="horaAcionamento" required>
+
+            <label>Previsão:</label>
+            <input type="time" id="previsaoTec" required>
+
+            <label>Técnico:</label>
+            <input type="text" id="tecnico" placeholder="DIGITE O TÉCNICO">
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="destacar">
+                <label for="destacar">Destacar com * para WhatsApp (negrito)</label>
+            </div>
+
+            <button type="button" onclick="gerarAcionamento()">Gerar Acionamento</button>
+            <button type="button" onclick="copiarAcionamento()">Copiar Acionamento</button>
+        </form>
+
+        <div id="resultado"></div>
+        <button type="button" onclick="toggleTheme()">Alternar Modo Claro/Escuro</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
